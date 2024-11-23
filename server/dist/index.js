@@ -43,6 +43,7 @@ const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
 const dynamoose = __importStar(require("dynamoose"));
+const courseRoutes_1 = __importDefault(require("./routes/courseRoutes"));
 // CONFIGURATIONS
 dotenv_1.default.config();
 const isProduction = process.env.NODE_ENV === "production";
@@ -61,6 +62,7 @@ app.use((0, cors_1.default)());
 app.get("/", (req, res) => {
     res.send("Hello Word!");
 });
+app.use("/courses", courseRoutes_1.default);
 // SERVER
 const port = process.env.PORT || 3000;
 if (!isProduction) {
