@@ -9,6 +9,7 @@ import { Skeleton } from "@/src/components/ui/skeleton";
 import { useGetCoursesQuery } from "@/src/state/api";
 import CourseCardSearch from "@/src/components/CourseCardSearch";
 import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 
 const LoadingSkeleton = () => {
   return (
@@ -51,7 +52,6 @@ const Landing = () => {
   const handleCourseClick = (courseId: string) => {
     router.push(`/search?id=${courseId}`);
   };
-  console.log("courses", courses);
 
   if (isLoading) {
     return <LoadingSkeleton />;
