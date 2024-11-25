@@ -6,14 +6,17 @@ const Footer = () => {
     <div className="footer">
       <p>&copy; 2024 Shixun Li. All Rights Reserved.</p>
       <div className="footer__links">
-        {["About", "privacy Policy", "Licensing", "Contact"].map((item) => (
-          <Link
-            href={`/${item.toLocaleLowerCase().replace(" ", "-")}`}
-            className="footer__link"
-          >
-            {item}
-          </Link>
-        ))}
+        {["About", "privacy Policy", "Licensing", "Contact"].map(
+          (item, index) => (
+            <Link
+              key={index}
+              href={`/${item.toLocaleLowerCase().replace(" ", "-")}`}
+              className="footer__link"
+            >
+              {item}
+            </Link>
+          )
+        )}
       </div>
     </div>
   );
