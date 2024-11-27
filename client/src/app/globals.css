@@ -504,7 +504,7 @@ input[type="color"] {
 }
 
 .billing__select-content {
-  @apply bg-customgreys-primarybg;
+  @apply bg-customgreys-primarybg text-white-50;
 }
 
 .billing__select-item {

@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createTransaction = exports.createStripePaymentIntent = void 0;
+exports.createTransaction = exports.createStripePaymentIntent = exports.listTransactions = void 0;
 const stripe_1 = __importDefault(require("stripe"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const courseModel_1 = __importDefault(require("../models/courseModel"));
@@ -23,6 +23,22 @@ if (!process.env.STRIPE_SECRET_KEY) {
     throw new Error("STRIPE_SECRET_KEY os required but was not found in env variables");
 }
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY);
+const listTransactions = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId } = req.query;
+    try {
+        const transactions = userId
+            ? yield transactionModel_1.default.query("userId").eq(userId).exec()
+            : yield transactionModel_1.default.scan().exec();
+        res.json({
+            message: "Transactions retrieved successfully",
+            data: transactions,
+        });
+    }
+    catch (error) {
+        res.status(500).json({ message: "Error retrieving transactions", error });
+    }
+});
+exports.listTransactions = listTransactions;
 const createStripePaymentIntent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let { amount } = req.body;
     if (!amount || amount <= 0) {
