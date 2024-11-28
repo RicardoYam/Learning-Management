@@ -36,20 +36,20 @@ const AppSidebar = () => {
   const navLinks = {
     student: [
       { icon: BookOpen, label: "Courses", href: "/user/courses" },
-      { icon: Briefcase, label: "Billings", href: "/user/billing" },
+      { icon: Briefcase, label: "Billing", href: "/user/billing" },
       { icon: User, label: "Profile", href: "/user/profile" },
       { icon: Settings, label: "Settings", href: "/user/settings" },
     ],
     teacher: [
       { icon: BookOpen, label: "Courses", href: "/teacher/courses" },
-      { icon: DollarSign, label: "Billings", href: "/teacher/billing" },
+      { icon: DollarSign, label: "Billing", href: "/teacher/billing" },
       { icon: User, label: "Profile", href: "/teacher/profile" },
       { icon: Settings, label: "Settings", href: "/teacher/settings" },
     ],
   };
 
   if (!isLoaded) return <Loading />;
-  if (!user) return <div>User not found.</div>;
+  if (!user) return <div>User not found</div>;
 
   const userType =
     (user.publicMetadata.userType as "student" | "teacher") || "student";
@@ -78,7 +78,7 @@ const AppSidebar = () => {
                     height={20}
                     className="app-sidebar__logo"
                   />
-                  <p className="app-sidebar__title">Xun</p>
+                  <p className="app-sidebar__title">EDROH</p>
                 </div>
                 <PanelLeft className="app-sidebar__collapse-icon" />
               </div>

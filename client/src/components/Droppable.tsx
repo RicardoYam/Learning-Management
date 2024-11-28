@@ -1,16 +1,16 @@
 "use client";
 
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/src/components/ui/button";
 import { Trash2, Edit, Plus, GripVertical } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "@/state/redux";
+import { useAppDispatch, useAppSelector } from "@/src/state/redux";
 import {
   setSections,
   deleteSection,
   deleteChapter,
   openSectionModal,
   openChapterModal,
-} from "@/state";
+} from "@/src/state";
 
 export default function DroppableComponent() {
   const dispatch = useAppDispatch();
