@@ -1,7 +1,6 @@
 "use client";
 
 import { CustomFormField } from "@/src/components/CustomFormField";
-import DroppableComponent from "@/src/components/Droppable";
 import Header from "@/src/components/Header";
 import { Button } from "@/src/components/ui/button";
 import { Form } from "@/src/components/ui/form";
@@ -12,13 +11,18 @@ import {
   uploadAllVideos,
 } from "@/src/lib/utils";
 import { openSectionModal, setSections } from "@/src/state";
-import { useGetCourseQuery, useUpdateCourseMutation } from "@/src/state/api";
+import {
+  useGetCourseQuery,
+  useUpdateCourseMutation,
+  useGetUploadVideoUrlMutation,
+} from "@/src/state/api";
 import { useAppDispatch, useAppSelector } from "@/src/state/redux";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowLeft, Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import DroppableComponent from "./Droppable";
 import ChapterModal from "./ChapterModal";
 import SectionModal from "./SectionModal";
 
@@ -170,7 +174,9 @@ const CourseEditor = () => {
 
             <div className="bg-customgreys-darkGrey mt-4 md:mt-0 p-4 rounded-lg basis-1/2">
               <div className="flex justify-between items-center mb-2">
-                <h2 className="text-2xl font-semibold">Sections</h2>
+                <h2 className="text-2xl font-semibold text-secondary-foreground">
+                  Sections
+                </h2>
 
                 <Button
                   type="button"
@@ -207,6 +213,3 @@ const CourseEditor = () => {
 };
 
 export default CourseEditor;
-function useGetUploadVideoUrlMutation(): [any] {
-  throw new Error("Function not implemented.");
-}
