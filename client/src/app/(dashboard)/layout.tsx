@@ -8,6 +8,7 @@ import { SidebarProvider } from "@/src/components/ui/sidebar";
 import { useUser } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import ChaptersSidebar from "./user/courses/[courseId]/ChaptersSidebar";
 
 export default function DashboardLayout({
   children,
@@ -38,7 +39,7 @@ export default function DashboardLayout({
       <div className="dashboard">
         <AppSidebar />
         <div className="dashboard__content">
-          {/* {courseId && <ChaptersSidebar />} */}
+          {courseId && <ChaptersSidebar />}
           <div
             className={cn(
               "dashboard__main",

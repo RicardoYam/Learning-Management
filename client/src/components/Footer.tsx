@@ -10,6 +10,7 @@ const Footer = () => {
           (item, index) => (
             <Link
               key={index}
+              scroll={false}
               href={`/${item.toLocaleLowerCase().replace(" ", "-")}`}
               className="footer__link"
             >

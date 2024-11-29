@@ -4,10 +4,14 @@ import {
   CardContent,
   CardTitle,
   CardFooter,
-} from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+} from "@/src/components/ui/card";
+import {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+} from "@/src/components/ui/avatar";
 import Image from "next/image";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice } from "@/src/lib/utils";
 
 const CourseCard = ({ course, onGoToCourse }: CourseCardProps) => {
   return (

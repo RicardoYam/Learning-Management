@@ -50,7 +50,9 @@ const Landing = () => {
   const { data: courses, isLoading, isError } = useGetCoursesQuery({});
 
   const handleCourseClick = (courseId: string) => {
-    router.push(`/search?id=${courseId}`);
+    router.push(`/search?id=${courseId}`, {
+      scroll: false,
+    });
   };
 
   if (isLoading) {
@@ -73,9 +75,13 @@ const Landing = () => {
         <div className="landing__hero-content">
           <h1 className="landing__title">Courses</h1>
           <br />
-          <p className="landing__description">This is a description.</p>
+          <p className="landing__description">
+            This is the list of the courses you can enroll in.
+            <br />
+            Courses when you need them and want them.
+          </p>
           <div className="landing__cta">
-            <Link href="/search">
+            <Link href="/search" scroll={false}>
               <div className="landing__cta-button">Search for Courses</div>
             </Link>
           </div>

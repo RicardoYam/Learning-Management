@@ -6,7 +6,11 @@ import Header from "@/src/components/Header";
 import { Button } from "@/src/components/ui/button";
 import { Form } from "@/src/components/ui/form";
 import { courseSchema } from "@/src/lib/schemas";
-import { centsToDollars, createCourseFormData } from "@/src/lib/utils";
+import {
+  centsToDollars,
+  createCourseFormData,
+  uploadAllVideos,
+} from "@/src/lib/utils";
 import { openSectionModal, setSections } from "@/src/state";
 import { useGetCourseQuery, useUpdateCourseMutation } from "@/src/state/api";
 import { useAppDispatch, useAppSelector } from "@/src/state/redux";
@@ -24,7 +28,7 @@ const CourseEditor = () => {
   const id = params.id as string;
   const { data: course, isLoading, refetch } = useGetCourseQuery(id);
   const [updateCourse] = useUpdateCourseMutation();
-  //   const [getUploadVideoUrl] = useGetUploadVideoUrlMutation();
+  const [getUploadVideoUrl] = useGetUploadVideoUrlMutation();
 
   const dispatch = useAppDispatch();
   const { sections } = useAppSelector((state) => state.global.courseEditor);
@@ -55,16 +59,13 @@ const CourseEditor = () => {
 
   const onSubmit = async (data: CourseFormData) => {
     try {
-      //   const updatedSections = await uploadAllVideos(
-      //     sections,
-      //     id,
-      //     getUploadVideoUrl
-      //   );
+      const updatedSections = await uploadAllVideos(
+        sections,
+        id,
+        getUploadVideoUrl
+      );
 
-      //   const formData = createCourseFormData(data, updatedSections);
-
-      // delete
-      const formData = createCourseFormData(data, sections);
+      const formData = createCourseFormData(data, updatedSections);
 
       await updateCourse({
         courseId: id,
@@ -206,3 +207,6 @@ const CourseEditor = () => {
 };
 
 export default CourseEditor;
+function useGetUploadVideoUrlMutation(): [any] {
+  throw new Error("Function not implemented.");
+}

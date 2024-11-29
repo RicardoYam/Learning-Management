@@ -13,6 +13,9 @@ import {
 } from "@clerk/express";
 import userClerkRoutes from "./routes/userClerkRoutes";
 import transactionRoutes from "./routes/transactionRoutes";
+import userCourseProgressRoutes from "./routes/userCourseProgressRoutes";
+import serverless from "serverless-http";
+import seed from "./seed/seedDynamodb";
 
 // CONFIGURATIONS
 dotenv.config();
@@ -45,6 +48,7 @@ app.get("/", (req, res) => {
 app.use("/courses", courseRoutes);
 app.use("/users/clerk", requireAuth(), userClerkRoutes);
 app.use("/transactions", requireAuth(), transactionRoutes);
+app.use("/users/course-progress", requireAuth(), userCourseProgressRoutes);
 
 // SERVER
 const port = process.env.PORT || 3000;
@@ -53,3 +57,17 @@ if (!isProduction) {
     console.log(`Server running on port ${port}`);
   });
 }
+
+// AWS production enviornment
+const serverlessApp = serverless(app);
+export const handler = async (event: any, context: any) => {
+  if (event.action === "seed") {
+    await seed();
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: "Data seeded successfully" }),
+    };
+  } else {
+    return serverlessApp(event, context);
+  }
+};
