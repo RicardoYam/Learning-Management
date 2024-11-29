@@ -158,6 +158,7 @@ export const deleteCourse = async (
   }
 };
 
+// video uploading use S3
 export const getUploadVideoUrl = async (
   req: Request,
   res: Response
