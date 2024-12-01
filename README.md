@@ -97,11 +97,7 @@ Create DynamoDB tables by simply run a test event `{"action": "seed"}`, and tabl
 
 ## Screenshots
 
-![ecr](/Users/ricardo/Downloads/ecr.png)
-
-
-
-![lambda](/Users/ricardo/Downloads/lambda.png)
+![ecr](./docs/ecr.png)
 
 
 
@@ -109,9 +105,5 @@ Create DynamoDB tables by simply run a test event `{"action": "seed"}`, and tabl
 
 
 
-![api gateway](./docs/api-gateway.png)
-
-
-
-![ecr](./docs/ecr.png)
+![gateway](./docs/api-gateway.png)
 
