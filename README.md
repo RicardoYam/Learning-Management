@@ -3,8 +3,8 @@
     Learning Management
   </h1>
   <img src="./docs/home.png" alt="Homepage" width="500" />
-  <div>
-  <h3 style="display: flex;">
+  <div style="display: flex;">
+  <h3>
     <a href="https://lm-prod.top">Visit it Now!</a>
   </h3>
 	|
