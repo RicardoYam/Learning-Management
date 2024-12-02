@@ -4,10 +4,10 @@
   </h1>
   <img src="./docs/home.png" alt="Homepage" width="500" />
   <h3>
-    <a href="https://lm-prod.top">Visit it Now!</a>
-  </h3>
-  <h3>
-    <a href="https://miro.com/app/board/uXjVLPcg1bs=/?share_link_id=386476840608">Workflow</a>
+    <span>
+      <a href="https://lm-prod.top">Visit it Now!</a> | 
+      <a href="https://miro.com/app/board/uXjVLPcg1bs=/?share_link_id=386476840608">Workflow</a>
+    </span>
   </h3>
 </div>
 
